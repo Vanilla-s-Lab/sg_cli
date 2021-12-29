@@ -1,11 +1,13 @@
 use std::fs;
 
+use tap::Tap;
+
 const STEAM_SECRET: &str = ".steam_secret";
 
 fn main() {
-    let mut home_dir_buf = dirs::home_dir()
-        .expect("Error while getting home_dir. ");
-    home_dir_buf.push(STEAM_SECRET);
+    let home_dir_buf = dirs::home_dir()
+        .expect("Error while getting home_dir. ")
+        .tap_mut(|hdb| { hdb.push(STEAM_SECRET) });
 
     let error_msg = format!("Error while reading file {:?}. ", home_dir_buf);
     let steam_secret = fs::read_to_string(home_dir_buf)
