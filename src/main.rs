@@ -5,12 +5,12 @@ use tap::Tap;
 const STEAM_SECRET: &str = ".steam_secret";
 
 fn main() {
-    let home_dir_buf = dirs::home_dir()
+    let ss_path = dirs::home_dir()
         .expect("Error while getting home_dir. ")
         .tap_mut(|hdb| { hdb.push(STEAM_SECRET) });
 
-    let error_msg = format!("Error while reading file {:?}. ", home_dir_buf);
-    let steam_secret = fs::read_to_string(home_dir_buf)
+    let error_msg = format!("Error while reading file {:?}. ", ss_path);
+    let steam_secret = fs::read_to_string(ss_path)
         .expect(error_msg.as_str()).trim().to_string();
 
     let sg_code = steam_guard::from_secret(&steam_secret)
