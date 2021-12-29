@@ -3,5 +3,30 @@
 version = 3
 
 [[package]]
+name = "base64"
+version = "0.11.0"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "b41b7ea54a0c9d92199de89e20e58d49f02f8e699814ef3fdf266f6f748d15c7"
+
+[[package]]
 name = "sg_cli"
 version = "0.1.0"
+dependencies = [
+ "steam_guard",
+]
+
+[[package]]
+name = "sha1"
+version = "0.6.0"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "2579985fda508104f7587689507983eadd6a6e84dd35d6d115361f530916fa0d"
+
+[[package]]
+name = "steam_guard"
+version = "1.0.1"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "13e0c6f0f8b5807a5daab7063b3e7124fe966039ecdfd3f107d1417f1ecab0d8"
+dependencies = [
+ "base64",
+ "sha1",
+]
