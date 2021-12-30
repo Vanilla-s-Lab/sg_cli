@@ -16,4 +16,6 @@ jobs:
           command: build
           args: --release
 
-      - run: find .
+      - uses: actions/upload-artifact@v2
+        with:
+          path: target/release/sg_cli
