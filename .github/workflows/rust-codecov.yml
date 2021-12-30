@@ -3,6 +3,7 @@ on: [ push ]
 
 jobs:
   Rust-Codecov:
+    runs-on: ubuntu-latest
     steps:
       - name: Rust Codecov
         uses: maboesanman/rust-codecov@v0
