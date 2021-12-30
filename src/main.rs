@@ -15,5 +15,5 @@ fn main() {
     let sg_code = steam_guard::from_secret(&steam_secret).unwrap();
     let expire_sec = steam_guard::expires_in_sec();
 
-    println!("Steam Guard Code: {}, expire in {} s. ", sg_code, expire_sec);
+    println!("Steam Guard Code: \"{}\", expire in {} s. ", sg_code, expire_sec);
 }
