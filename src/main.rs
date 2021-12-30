@@ -18,7 +18,8 @@ fn main() {
     let expire_sec = steam_guard::expires_in_sec();
 
     sg_code_string(&sg_code, expire_sec).as_bytes()
-        .pipe(|it| { io::stdout().write_all(it) });
+        .pipe(|it| { io::stdout().write_all(it) })
+        .unwrap(); // #[warn(unused_must_use)]
 }
 
 fn sg_code_string(sg_code: &str, expire_sec: u64) -> String {
