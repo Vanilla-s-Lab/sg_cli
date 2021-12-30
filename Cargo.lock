@@ -87,6 +87,7 @@ name = "sg_cli"
 version = "0.1.0"
 dependencies = [
  "dirs",
+ "serde",
  "steam_guard",
  "tap",
  "toml",
