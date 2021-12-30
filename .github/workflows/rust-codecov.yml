@@ -6,6 +6,5 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      - name: Rust Codecov
-        uses: maboesanman/rust-codecov@v0
-      - run: "cat codecov.json"
+      - uses: cachix/install-nix-action@v15
+      - run: nix-shell nix-shell/codecov.nix
