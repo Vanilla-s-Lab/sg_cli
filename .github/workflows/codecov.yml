@@ -10,5 +10,5 @@ jobs:
         with:
           nix_path: nixpkgs=channel:nixos-unstable
 
-      - run: nix-shell nix-shell/codecov.nix --pure
+      - run: nix-shell nix-scripts/codecov.nix --pure
       - uses: codecov/codecov-action@v2
