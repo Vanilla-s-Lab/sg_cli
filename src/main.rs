@@ -2,12 +2,12 @@ use std::fs;
 
 use tap::Tap;
 
-const STEAM_SECRET: &str = ".steam_secret";
+const CONFIG_FILE: &str = ".sg_cli.toml";
 
 fn main() {
     let ss_path = dirs::home_dir()
         .expect("Error while getting home_dir. ")
-        .tap_mut(|hdb| { hdb.push(STEAM_SECRET) });
+        .tap_mut(|hdb| { hdb.push(CONFIG_FILE) });
 
     let error_msg = format!("Error while reading file {:?}. ", ss_path);
     let steam_secret = fs::read_to_string(ss_path)
