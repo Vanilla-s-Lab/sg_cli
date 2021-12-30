@@ -7,14 +7,11 @@ jobs:
     steps:
       - uses: actions/checkout@v2
 
-      - uses: actions-rs/toolchain@v1
+      - uses: cachix/install-nix-action@v15
         with:
-          toolchain: stable
+          nix_path: nixpkgs=channel:nixos-unstable
 
-      - uses: actions-rs/cargo@v1
-        with:
-          command: build
-          args: --release
+      - run: nix-shell nix-shell/cargo-build.nix --pure
 
       - uses: actions/upload-artifact@v2
         with:
