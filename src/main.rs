@@ -7,8 +7,8 @@ use sg_cli::{Config, CONFIG_FILE};
 fn main() {
     let config: Config = dirs::home_dir().expect("Error while getting home_dir. ")
         .tap_mut(|it| { it.push(CONFIG_FILE) }).pipe(fs::read_to_string)
-        .expect(format!("Failed to read the config file {}. ", CONFIG_FILE).as_str())
-        .pipe(|it| { toml::from_str(it.as_str()) }).expect("Failed to parse the config file. ");
+        .expect(&format!("Failed to read the config file {}. ", CONFIG_FILE))
+        .pipe(|it| { toml::from_str(&it) }).expect("Failed to parse the config file. ");
 
     let steam_secret = config.sg_cli.secret;
 
