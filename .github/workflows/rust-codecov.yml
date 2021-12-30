@@ -1,0 +1,9 @@
+name: Rust Codecov
+on: [ push ]
+
+jobs:
+  Rust-Codecov:
+    steps:
+      - name: Rust Codecov
+        uses: maboesanman/rust-codecov@v0
+      - run: "cat codecov.json"
