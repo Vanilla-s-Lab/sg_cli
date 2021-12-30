@@ -1,6 +1,6 @@
 { pkgs ? import <nixpkgs> { } }:
 pkgs.mkShell {
-  nativeBuildInputs = with pkgs; [ cargo-tarpaulin cargo clang ];
+  nativeBuildInputs = with pkgs; [ cargo-tarpaulin cargo glibc ];
 
   # https://github.com/xd009642/tarpaulin#travis-ci-and-coverage-sites
   shellHook = "exec cargo tarpaulin --out Xml";
