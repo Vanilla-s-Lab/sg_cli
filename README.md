@@ -1,4 +1,4 @@
-# Steam Guard CLI
+## Steam Guard CLI
 
 Access your Steam Guard token locally.
 
