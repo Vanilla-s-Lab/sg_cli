@@ -1,17 +1,16 @@
 use std::fs;
 
-use tap::Tap;
+use tap::{Pipe, Tap};
 
-const CONFIG_FILE: &str = ".sg_cli.toml";
+use sg_cli::{Config, CONFIG_FILE};
 
 fn main() {
-    let ss_path = dirs::home_dir()
-        .expect("Error while getting home_dir. ")
-        .tap_mut(|hdb| { hdb.push(CONFIG_FILE) });
+    let config: Config = dirs::home_dir().expect("Error while getting home_dir. ")
+        .tap_mut(|ct| { ct.push(CONFIG_FILE) }).pipe(fs::read_to_string)
+        .expect(format!("Failed to read the config file {}. ", CONFIG_FILE).as_str())
+        .pipe(|cc| { toml::from_str(cc.as_str()) }).expect("Failed to parse the config file. ");
 
-    let error_msg = format!("Error while reading file {:?}. ", ss_path);
-    let steam_secret = fs::read_to_string(ss_path)
-        .expect(error_msg.as_str()).trim().to_string();
+    let steam_secret = config.sg_cli.secret;
 
     let sg_code = steam_guard::from_secret(&steam_secret)
         .unwrap_or_else(|err| { panic!("{}", err) });
