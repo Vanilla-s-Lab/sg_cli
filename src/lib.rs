@@ -15,4 +15,8 @@ pub struct SgCli {
 
 #[derive(Parser, Debug)]
 #[clap(author, version, about, long_about = None)]
-pub struct Args {}
+pub struct Args {
+    /// Specific secret from Steam Guard
+    #[clap(short, long)]
+    pub secret: Option<String>,
+}
