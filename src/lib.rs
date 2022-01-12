@@ -1,3 +1,4 @@
+use clap::Parser;
 use serde::Deserialize;
 
 pub const CONFIG_FILE: &str = ".sg_cli.toml";
@@ -11,3 +12,7 @@ pub struct Config {
 pub struct SgCli {
     pub secret: String,
 }
+
+#[derive(Parser, Debug)]
+#[clap(author, version, about, long_about = None)]
+pub struct Args {}

@@ -2,11 +2,14 @@ use std::{fs, io};
 use std::io::Write;
 
 use atty::Stream;
+use clap::Parser;
 use tap::{Pipe, Tap};
 
-use sg_cli::{Config, CONFIG_FILE};
+use sg_cli::{Args, Config, CONFIG_FILE};
 
 fn main() {
+    Args::parse();
+
     let config: Config = dirs::home_dir().expect("Error while getting home_dir. ")
         .tap_mut(|it| { it.push(CONFIG_FILE) }).pipe(fs::read_to_string)
         .expect(&format!("Failed to read the config file {}. ", CONFIG_FILE))
