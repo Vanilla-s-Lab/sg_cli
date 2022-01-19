@@ -15,7 +15,8 @@ fn main() {
         Some(secret) => secret,
     };
 
-    let sg_code = steam_guard::from_secret(&steam_secret).unwrap();
+    let sg_code = steam_guard::from_secret(&steam_secret)
+        .expect("Decode Error! Please check the Steam Guard secret. ");
     let expire_sec = steam_guard::expires_in_sec();
 
     sg_code_string(&sg_code, expire_sec).as_bytes()
