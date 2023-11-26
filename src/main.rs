@@ -1,7 +1,6 @@
-use std::{fs, io};
-use std::io::Write;
+use std::fs;
+use std::io::{IsTerminal, Write};
 
-use atty::Stream;
 use clap::Parser;
 use tap::{Pipe, Tap};
 
@@ -20,12 +19,12 @@ fn main() {
     let expire_sec = steam_guard::expires_in_sec();
 
     sg_code_string(&sg_code, expire_sec).as_bytes()
-        .pipe(|it| { io::stdout().write_all(it) })
+        .pipe(|it| { std::io::stdout().write_all(it) })
         .unwrap(); // #[warn(unused_must_use)]
 }
 
 fn sg_code_string(sg_code: &str, expire_sec: u64) -> String {
-    match atty::is(Stream::Stdout) {
+    match std::io::stdout().is_terminal() {
         true => format!("Steam Guard Code: \"{}\", expire in {} s. ", sg_code, expire_sec),
         false => format!("{}", sg_code), // For piping, like `sg_cli | clipboard`.
     }
