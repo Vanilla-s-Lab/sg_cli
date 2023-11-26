@@ -19,8 +19,3 @@ Access your Steam Guard token locally.
 
 - you also can use `sg_cli | clipboard` to copy the verification code : )
 - The CLI tools `clipboard-cli`: https://github.com/sindresorhus/clipboard-cli, that was useful.
-
-### Credit
-
-https://github.com/steevp/UpdogFarmer/blob/master/app/src/main/java/com/steevsapps/idledaddy/steam/SteamGuard.java  
-Rust lib & cli app: https://github.com/SFort/steam_guard & https://github.com/simonsmh/RSteamGuard.
