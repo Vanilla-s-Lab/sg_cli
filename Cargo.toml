@@ -9,12 +9,12 @@ description = "Steam Guard code, but locally and offline."
 
 [dependencies]
 steam_guard = "1.0.1"
-dirs = "4.0.0"
+dirs = "5.0"
 tap = "1.0.1"
 
-toml = "0.5.8"
+toml = "0.8.8"
 serde = { version = "1.0", features = ["derive"] }
 
-atty = "0.2.14"
+atty = "0.2"
 
-clap = { version = "3.0.6", features = ["derive"] }
+clap = { version = "4.4.8", features = ["derive"] }
